@@ -1,23 +1,18 @@
 class Solution {
-    public static boolean isLucky(int [] arr,int n){
-        int c=0;
+    public int findLucky(int[] arr) {
+        TreeMap<Integer,Integer> map=new TreeMap<>();
         for(int i=0;i<arr.length;i++){
-            if(arr[i]==n){
-                c++;
+            if(map.containsKey(arr[i])){
+                map.put(arr[i],map.get(arr[i])+1);
+            }
+            else{
+                map.put(arr[i],1);
             }
         }
-        if(c==n){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    public int findLucky(int[] arr) {
         int large=0;
-        for(int i=0;i<arr.length;i++){
-            if(isLucky(arr,arr[i]) && large<arr[i]){
-                large=arr[i];
+        for(Map.Entry<Integer,Integer> entry :map.entrySet()){
+            if(entry.getKey().equals(entry.getValue())){
+                large=Math.max(large,entry.getKey());
             }
         }
         if(large==0){
@@ -26,5 +21,6 @@ class Solution {
         else{
             return large;
         }
+
     }
 }
