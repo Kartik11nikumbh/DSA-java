@@ -1,3 +1,6 @@
+//First rotate full array
+//after rotate upto k-1
+//after rotate k from last
 class Solution {
     public void rotate(int[] nums, int k) {
         if(nums.length<2) 
